@@ -22,13 +22,13 @@ package Box2D.Common.Math{
 
 
 /**
-* A 2D column vector with 3 elements.
+* A column vector with 3 elements.
 */
 
 public class b2Vec3
 {
 	/**
-	 * Construct using co-ordinates
+	 * Default constructor to set the coordinates of a vector.
 	 */
 	public function b2Vec3(x:Number = 0, y:Number = 0, z:Number = 0)
 	{
@@ -46,7 +46,7 @@ public class b2Vec3
 	}
 	
 	/**
-	 * Set this vector to some specified coordinates.
+	 * Sets this vector to some specified coordinates.
 	 */
 	public function Set(x:Number, y:Number, z:Number):void
 	{
@@ -55,6 +55,9 @@ public class b2Vec3
 		this.z = z;
 	}
 	
+	/**
+	 * Copies the values of the vector into this one.
+	 */
 	public function SetV(v:b2Vec3):void
 	{
 		x = v.x;
@@ -63,26 +66,44 @@ public class b2Vec3
 	}
 	
 	/**
-	 * Negate this vector
+	 * Returns a negated (antiparallel) version of this vector. Original vector is unchanged.
 	 */
 	public function GetNegative():b2Vec3 { return new b2Vec3( -x, -y, -z); }
 	
+	/**
+	 *  Negates the vector (antiparallel).
+	 */
 	public function NegativeSelf():void { x = -x; y = -y; z = -z; }
 	
+	/**
+	 * Returns a copy of the vector. Useful for encapsulation.
+	 */
 	public function Copy():b2Vec3{
 		return new b2Vec3(x,y,z);
 	}
 	
+	/**
+	 * Adds two vectors together. 
+	 * [a, b, c] + [d, e, f] = [a+d, b+e, c+f]
+	 */
 	public function Add(v:b2Vec3) : void
 	{
 		x += v.x; y += v.y; z += v.z;
 	}
 	
+	/**
+	 * Subtracts a vector from this vector.
+	 * [a, b, c] - [d, e, f] = [a-d, b-e, c-f]
+	 */
 	public function Subtract(v:b2Vec3) : void
 	{
 		x -= v.x; y -= v.y; z -= v.z;
 	}
 
+	/**
+	 * Multiplies the vector by a scalar.
+	 * d[a, b, c] = [da, db, dc]
+	 */
 	public function Multiply(a:Number) : void
 	{
 		x *= a; y *= a; z *= a;
